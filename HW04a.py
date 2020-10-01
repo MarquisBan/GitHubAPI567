@@ -4,8 +4,7 @@ from _collections import defaultdict
 
 
 def GitHubAPI(userID: str):
-
-    repos_url = f"https://api.github.com/users/{userID}/repos"
+    repos_url = f'https://api.github.com/users/{userID}/repos'
     tt = 0
     # Trying Time
     while True:
@@ -24,8 +23,8 @@ def GitHubAPI(userID: str):
 
     repo_inf = defaultdict(int)
     for one in repo_names:
-        print(f"Repo: {one} Number of commits: ", end='')
-        rurl = f"https://api.github.com/repos/{userID}/{one}/commits"
+        print(f'Repo: {one} Number of commits: ', end='')
+        rurl = f'https://api.github.com/repos/{userID}/{one}/commits'
         tt = 0
         # Trying Time
         while True:
