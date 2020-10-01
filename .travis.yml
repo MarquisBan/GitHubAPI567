@@ -2,7 +2,8 @@ language: python
 python:
   - "3.5"
 install:
-  - pip install requests
+  - pip install urllib
+  - pip install re
 # command to run tests
 script:
   - from urllib.request import urlopen
