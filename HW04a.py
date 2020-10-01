@@ -4,8 +4,8 @@ from _collections import defaultdict
 
 
 def GitHubAPI(userID: str):
-    repos_url = f'https://api.github.com/users/{userID}/repos'
 
+    repos_url = f'https://api.github.com/users/{userID}/repos'
     tt = 0
     # Trying Time
     while True:
