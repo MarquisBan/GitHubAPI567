@@ -4,11 +4,11 @@ import HW04a
 
 class APITest(unittest.TestCase):
     def testConnection(self):
-        self.assertLessEqual(0, len(HW04a.urlopen('http://github.com').read()))
+        self.assertLess(0, len(HW04a.urlopen('http://github.com').read()))
 
     def testMBSS(self):
-        # Test MarquisBan/Stevens-SW567
-        self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Stevens-SW567'], 3)
+        # Test MarquisBan/Stevens-SW567 which is not existed
+        self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Stevens-SW567'], 0)
 
     def testMBSR(self):
         # Test MarquisBan/Student-Repository
