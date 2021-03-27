@@ -1,10 +1,9 @@
 from urllib.request import urlopen
 import re
 from _collections import defaultdict
-from typing import Dict
 
 
-def get_reponames(userID: str):
+def GitHubAPI(userID: str):
     repos_url = f'https://api.github.com/users/{userID}/repos'
     tt = 0
     # Trying Time
@@ -20,12 +19,11 @@ def get_reponames(userID: str):
             break
 
     f = re.findall('"name":\s*"[a-zA-z-_0-9]*"', result)
-    return [x[8:-1] for x in f]
+    repo_names = [x[8:-1] for x in f]
 
-
-def get_commitTimes(repo_names, userID) -> Dict:
-    ans = defaultdict(int)
+    repo_inf = defaultdict(int)
     for one in repo_names:
+        print(f'Repo: {one} Number of commits: ', end='')
         rurl = f'https://api.github.com/repos/{userID}/{one}/commits'
         tt = 0
         # Trying Time
@@ -40,14 +38,7 @@ def get_commitTimes(repo_names, userID) -> Dict:
             else:
                 break
         f = re.findall('"commit"', result)
-        ans[one] = len(f)
-    return ans
-
-
-def GitHubAPI(userID: str):
-    repo_names = get_reponames(userID)
-
-    repo_inf = get_commitTimes(repo_names, userID)
-    for one in repo_inf:
-        print(f'Repo: {one} Number of commits: {repo_inf[one]}')
+        repo_inf[one] = len(f)
+        print(len(f))
     return repo_inf
+
