@@ -45,12 +45,12 @@ class TestMockAPI(unittest.TestCase):
 
     @mock.patch('HW04a.get_reponames', side_effect=mock_getRepoNames)
     def test_replaceGetNames(self, mock_test):
-        self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Stevens-SW567'], 3)
+        self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Stevens-SW567'], 0)
         self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Student-Repository'], 6)
 
     @mock.patch('HW04a.get_commitTimes', side_effect=mock_getCommitTimes)
     def test_replaceGetCommit(self, mock_test):
-        self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Stevens-SW567'], 3)
+        self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Stevens-SW567'], 0)
         self.assertEqual(HW04a.GitHubAPI('MarquisBan')['Student-Repository'], 6)
 
 
